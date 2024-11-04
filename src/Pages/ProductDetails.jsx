@@ -1,10 +1,10 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { addCart, getAllCartProduct } from "../Utilities";
+import { addCart, addWishList, getAllCartProduct, getAllWishProduct } from "../Utilities";
 
 const ProductDetails = () => {
     const { product_id } = useParams();
     const { products } = useLoaderData();
-    console.log(product_id)
+    // console.log(product_id)
     // console.log(products)
     const product = products.find(p => p.product_id === parseInt(product_id));
     // console.log(product)
@@ -12,6 +12,10 @@ const ProductDetails = () => {
     const handleAddCart= (product)=>{
         addCart(product)
         // getAllCartProduct(product)
+    };
+    const handleWishList = (product)=>{
+        addWishList(product)
+        // getAllWishProduct(product)
     }
     return (
         <div className="relative min-h-[90vh] flex flex-col">
@@ -92,7 +96,7 @@ const ProductDetails = () => {
                                 </div>
                                 {/* love react/wish list */}
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                                    <div className="indicator p-2 bg-white rounded-full">
+                                    <div onClick={()=>handleWishList(product)} className="indicator p-2 bg-white rounded-full">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                                         </svg>

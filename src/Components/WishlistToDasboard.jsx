@@ -1,9 +1,10 @@
+import { TiDeleteOutline } from "react-icons/ti";
+import { useLocation } from "react-router-dom";
 
-import { TiDeleteOutline } from 'react-icons/ti';
-
-const CartTODashboard = ({ product, handleRemove }) => {
-    console.log(handleRemove)
-    const {product_id, description, product_title, product_image, price } = product;
+const WishlistToDasboard = ({ product }) => {
+    // const location = useLocation();
+    // console.log(location.pathname) I don't need to use this bcz the component is separeted to product card
+    const { description, product_title, product_image, price } = product;
     return (
         <div className="flex md:justify-between bg-white shadow-xl py-5 mx-4 my-4 rounded-2xl">
             <div className='flex items-center'>
@@ -26,11 +27,11 @@ const CartTODashboard = ({ product, handleRemove }) => {
                     </div>
                 </div>
             </div>
-            <div onClick={()=> handleRemove(product_id)} className='md:pr-10 mr-5'>
-                <button className='text-red-500 text-lg md:text-3xl font-thin'><TiDeleteOutline /> </button>
+            <div className='md:pr-10 mr-5'>
+                <button className='text-red-500 text-lg md:text-3xl font-thin'><TiDeleteOutline></TiDeleteOutline>  </button>
             </div>
         </div>
     );
 };
 
-export default CartTODashboard;
+export default WishlistToDasboard;

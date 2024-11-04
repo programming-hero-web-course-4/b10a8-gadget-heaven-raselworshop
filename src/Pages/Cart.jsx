@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllCartProduct } from "../Utilities";
+import { getAllCartProduct, removeCartedProduct } from "../Utilities";
 import CartTODashboard from "../Components/CartTODashboard";
 import { NavLink } from "react-router-dom";
 
@@ -9,6 +9,13 @@ const Cart = () => {
         const carts = getAllCartProduct();
         setProduct(carts)
     }, [])
+    const handleRemove= (product_id) => {
+        console.log('remove p with id', product_id)
+    
+        removeCartedProduct(product_id);
+        const carts = getAllCartProduct();
+        setProduct(carts)
+    }
     return (
         <div>
             <div className="flex justify-between px-5 py-10">
@@ -24,7 +31,7 @@ const Cart = () => {
                 </div>
             </div>
             {
-                products.map(product => <CartTODashboard key={product.product_id} product={product}></CartTODashboard>)
+                products.map(product => <CartTODashboard key={product.product_id} handleRemove={handleRemove} product={product}></CartTODashboard>)
             }
         </div>
     );
