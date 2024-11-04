@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllWishProduct } from "../Utilities";
+import { getAllWishProduct, removeFromWishlist } from "../Utilities";
 import WishlistToDasboard from "../Components/WishlistToDasboard";
 
 const WishList = () => {
@@ -8,6 +8,11 @@ const WishList = () => {
         const wishlist = getAllWishProduct();
         setWishProduct(wishlist)
     }, [])
+    const handleRemoveWish = product_id =>{
+        removeFromWishlist(product_id);
+        const wishlist = getAllWishProduct();
+        setWishProduct(wishlist)
+    }
     return (
         <div>
             <div className="flex justify-between px-5 py-10">
@@ -15,7 +20,7 @@ const WishList = () => {
                 
             </div>
             {
-                wishProduct.map(product => <WishlistToDasboard key={product.product_id} product={product}></WishlistToDasboard>)
+                wishProduct.map(product => <WishlistToDasboard key={product.product_id} handleRemoveWish={handleRemoveWish} product={product}></WishlistToDasboard>)
             }
         </div>
     );
