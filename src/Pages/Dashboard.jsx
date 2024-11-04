@@ -18,7 +18,7 @@ const Dashboard = () => {
                 font-bold ${isActive ? 'btn btn-sm' : 'border-2 pt-1 px-4 rounded-2xl btn-sm'}`
                         } to='wishlist'>
                             WishList</NavLink>
-                        
+
                     </ul>
                 </div>
             </div>
