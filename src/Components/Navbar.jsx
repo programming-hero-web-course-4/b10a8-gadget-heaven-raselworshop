@@ -2,12 +2,12 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
     const location = useLocation();
-  
+
     return (
-        <div 
-        className={ `px-12 text-xl rounded-t-2xl
+        <div
+            className={`px-12 text-xl rounded-t-2xl
          ${location.pathname === '/' ? 'bg-purple-700' : ''}`
-                }
+            }
         >
             <div className="max-w-7xl mx-auto font-sora">
                 <div className="navbar">
@@ -54,16 +54,20 @@ const Navbar = () => {
                                     Dashboard
                                 </NavLink>
                                 {
-                                (location.pathname === '/dashboard'|| location.pathname === '/statistics') && (
-                                    <NavLink to={'/products'} className={({ isActive }) =>
-                                        `font-bold btn ${isActive ? 'text-warning btn-success' : 'hover:text-warning'}`
-                                    }>Product</NavLink>
-                                )
-                            }
+                                    (location.pathname === '/dashboard' || location.pathname === '/statistics') && (
+                                        <NavLink to={'/products'} className={({ isActive }) =>
+                                            `font-bold btn ${isActive ? 'text-warning btn-success' : 'hover:text-warning'}`
+                                        }>Product</NavLink>
+                                    )
+                                }
                             </ul>
                         </div>
+                        {/* {/^\/(dashboard|statistics|products|)(\/cart|\/wishlist)?$/.test(location.pathname) && */}
                         <NavLink
-                            className="font-bold font-sora text-xl"
+                            // className="font-bold font-sora text-xl"
+                            className={({ isActive }) =>
+                                `font-bold font-sora text-xl ${isActive ? 'text-white hover:text-warning' : 'hover:text-warning'}`
+                            }
                             to='/'
                         >
                             Gadget_Heaven
@@ -99,10 +103,10 @@ const Navbar = () => {
 
                             {/* (location.pathname === '/dashboard'|| location.pathname === '/statistics') i need more excution  */}
                             {/^\/(dashboard|statistics)(\/cart|\/wishlist)?$/.test(location.pathname) && (
-                                    <NavLink to={'/products'} className={({ isActive }) =>
-                                        `font-bold btn ${isActive ? 'text-warning btn-success' : 'hover:text-warning'}`
-                                    }>Product</NavLink>
-                                )
+                                <NavLink to={'/products'} className={({ isActive }) =>
+                                    `font-bold btn ${isActive ? 'text-warning btn-success' : 'hover:text-warning'}`
+                                }>Product</NavLink>
+                            )
                             }
 
                         </ul>
@@ -123,14 +127,14 @@ const Navbar = () => {
                                             strokeWidth="2"
                                             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                     </svg>
-                                    <span className="badge badge-sm indicator-item">9</span>
+                                    <span className="badge badge-sm indicator-item">0</span>
                                 </div>
                             </div>
                             <div
                                 tabIndex={0}
                                 className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
                                 <div className="card-body">
-                                    <span className="text-lg font-bold">9 Items</span>
+                                    <span className="text-lg font-bold">0 Items</span>
                                     <span className="text-info">Subtotal: $999</span>
                                     <div className="card-actions">
                                         <button className="btn btn-primary btn-block">View cart</button>
