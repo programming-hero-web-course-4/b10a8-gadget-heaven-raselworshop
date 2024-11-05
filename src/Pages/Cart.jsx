@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { getAllCartProduct, removeCartedProduct } from "../Utilities";
+import { getAllCartProduct, removeCartedProduct, removeCartedProductOnPurchase } from "../Utilities";
 import CartTODashboard from "../Components/CartTODashboard";
 import { NavLink } from "react-router-dom";
+import CartModal from "../Components/CartModal";
 
 const Cart = () => {
     const [products, setProduct] = useState([]);
-    const [sorted, setSorted] = useState(true)
+    const [modalOpen, setModalOpen] = useState(false);
+    const [totalPrice, setTotalPrice] = useState(0)
+    const [sorted, setSorted] = useState(true);
     useEffect(() => {
         const carts = getAllCartProduct();
         setProduct(carts)
@@ -17,13 +20,21 @@ const Cart = () => {
         const carts = getAllCartProduct();
         setProduct(carts)
     }
+    const handlePurchase = ()=>{
+        const total = products.reduce((total, product)=> total + product.price, 0).toFixed(2);
+        setTotalPrice(total)
+        products.forEach(product => removeCartedProductOnPurchase(product.product_id));
+        setProduct([]);
+        setModalOpen(true)
+    }
     const handleSort = () => {
         setSorted(!sorted)
     }
     const sortedProducts = [...products].sort((a, b) => {
         return sorted ? a.price - b.price : b.price - a.price;
     })
-    const totalCost = products.reduce((total, product)=> total + product.price, 0)
+    const totalCost = products.reduce((total, product)=> total + product.price, 0).toFixed(2);
+
     return (
         <div>
             <div className="flex justify-between px-5 py-10">
@@ -40,11 +51,18 @@ const Cart = () => {
                     >Sort By Price</NavLink>
                     <NavLink className={({ isActive }) => `font-sora font-semibold px-4 py-2 btn-outline outline-purple-600 text-purple-600 rounded-2xl 
                         ${isActive ? 'btn btn-sm' : ''}`}
+                        onClick={handlePurchase}
                     >Parchase</NavLink>
                 </div>
             </div>
             {
                 sortedProducts.map(product => <CartTODashboard key={product.product_id} handleRemove={handleRemove} product={product}></CartTODashboard>)
+            }
+            {
+                modalOpen && <CartModal
+                        // onClose={setModalOpen}
+                        totalPrice={totalPrice}
+                ></CartModal>
             }
         </div>
     );

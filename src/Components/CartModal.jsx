@@ -1,17 +1,19 @@
 import image from '../assets/Group.png'
-const CartModal = () => {
+const CartModal = ({ totalPrice }) => {
     return (
         <div>
-            <dialog  className="modal modal-middle">
-                <div className="modal-box">
-                    <figure>
+            
+            <dialog className="modal modal-bottom sm:modal-middle" open> 
+                <div className="modal-box flex flex-col items-center">
+                    <figure className='py-3'>
                         <img src={image} alt="" />
                     </figure>
                     <h3 className="font-bold text-2xl font-sora">Payment Successfully!</h3>
                     <p className="py-4">Thanks for purchasing.</p>
-                    <p>Total:</p>
+                    <p>Total:{totalPrice}</p>
                     <div className="modal-action">
-                        <form method="dialog">
+                        <form method="dialog" className='flex justify-center items-center'>
+                            {/* if there is a button in form, it will close the modal */}
                             <button className="btn">Close</button>
                         </form>
                     </div>

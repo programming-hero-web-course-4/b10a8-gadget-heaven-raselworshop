@@ -39,6 +39,13 @@ const removeCartedProduct = product_id => {
     localStorage.setItem('cart', JSON.stringify(remainingProduct))
     toast.success('Product successfully removed from cart !!');
 }
+//remove product from local storage on purchasing
+const removeCartedProductOnPurchase = product_id => {
+    // console.log(product_id)
+    const carts = getAllCartProduct();
+    const remainingProduct = carts.filter(product => product.product_id !== product_id);
+    localStorage.setItem('cart', JSON.stringify(remainingProduct))
+}
 
 // add wishlist
 const getAllWishProduct = () => {
@@ -75,4 +82,4 @@ const removeFromWishlist = product_id =>{
 }
 
 
-export { addCart, getAllCartProduct, addWishList, getAllWishProduct, removeCartedProduct, removeFromWishlist, }
+export { addCart, getAllCartProduct, addWishList, getAllWishProduct, removeCartedProduct, removeFromWishlist, removeCartedProductOnPurchase, }
