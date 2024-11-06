@@ -27,7 +27,7 @@ const ProductDetails = () => {
                 <div className="hero w-full bg-white place-items-center  rounded-xl">
                     <div className="hero-content flex-col lg:flex-row">
                         <img
-                            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+                            src={product_image}
                             className="max-w-sm rounded-lg shadow-2xl" />
                         <div>
                             <h1 className="text-5xl font-bold">{product_title}</h1>
@@ -77,7 +77,7 @@ const ProductDetails = () => {
                                 </div>
                             </div>
                             <div className="dropdown flex items-center gap-2 mt-2">
-                                <div tabIndex={0} role="button" className="btn btn-sm">
+                                <div tabIndex={0} role="button" className="btn btn-sm  hover:bg-purple-700 hover:text-white">
                                     <div onClick={()=>handleAddCart(product)} className="px-2 rounded-2xl flex items-center gap-1">
                                         <span className="font-sora font-bold text-lg">Add To Card</span>
                                         <svg
@@ -95,7 +95,7 @@ const ProductDetails = () => {
                                     </div>
                                 </div>
                                 {/* love react/wish list */}
-                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle  hover:bg-purple-700 hover:text-purple-700">
                                     <div onClick={()=>handleWishList(product)} className="indicator p-2 bg-white rounded-full">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />

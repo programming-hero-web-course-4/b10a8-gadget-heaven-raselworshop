@@ -4,9 +4,9 @@ const Product = ({ product }) => {
     const { product_id, product_title, product_image, price } = product;
     return (
         <div className="card bg-base-100 shadow-xl mx-2 mb-4">
-            <figure className="px-10 pt-10">
+            <figure className="px-6 pt-10">
                 <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    src={product_image}
                     alt="Shoes"
                     className="rounded-xl" />
             </figure>

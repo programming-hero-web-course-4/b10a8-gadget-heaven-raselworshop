@@ -9,7 +9,7 @@ const CartTODashboard = ({ product, handleRemove }) => {
             <div className='flex items-center'>
                 <figure className="p-2 md:px-10 w-52">
                     <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        src={product_image}
                         alt="Shoes"
                         className="rounded-xl h-full" />
                 </figure>
