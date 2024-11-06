@@ -11,7 +11,7 @@ const Navbar = () => {
         >
             <div className="max-w-7xl mx-auto font-sora">
                 <div className="navbar">
-                    <div className="navbar-start">
+                    <div className="navbar-start -ml-5 md:ml-0 mr-5 md:mr-0">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                                 <svg
@@ -66,7 +66,7 @@ const Navbar = () => {
                         <NavLink
                             // className="font-bold font-sora text-xl"
                             className={({ isActive }) =>
-                                `font-bold font-sora text-xl ${isActive ? 'text-white hover:text-warning' : 'hover:text-warning'}`
+                                `font-bold font-sora text-lg md:text-xl ${isActive ? 'text-white hover:text-warning' : 'hover:text-warning'}`
                             }
                             to='/'
                         >

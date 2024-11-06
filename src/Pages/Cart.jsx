@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllCartProduct, removeCartedProduct, removeCartedProductOnPurchase } from "../Utilities";
 import CartTODashboard from "../Components/CartTODashboard";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import CartModal from "../Components/CartModal";
 
 const Cart = () => {
@@ -9,6 +9,7 @@ const Cart = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0)
     const [sorted, setSorted] = useState(true);
+    const navigate = useNavigate();
     useEffect(() => {
         const carts = getAllCartProduct();
         setProduct(carts)
@@ -62,6 +63,7 @@ const Cart = () => {
                 modalOpen && <CartModal
                         // onClose={setModalOpen}
                         totalPrice={totalPrice}
+                        navigate={navigate}
                 ></CartModal>
             }
         </div>

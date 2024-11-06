@@ -28,6 +28,11 @@
       "id": 6,
       "category": "Power Banks",
       "slug": "power-banks"
+    },
+    {
+      "id": 7,
+      "category": "Others",
+      "slug": ""
     }
   ]
   

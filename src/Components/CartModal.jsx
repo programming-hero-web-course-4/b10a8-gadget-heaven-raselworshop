@@ -1,5 +1,5 @@
 import image from '../assets/Group.png'
-const CartModal = ({ totalPrice }) => {
+const CartModal = ({ totalPrice, navigate }) => {
     return (
         <div>
             
@@ -14,7 +14,7 @@ const CartModal = ({ totalPrice }) => {
                     <div className="modal-action">
                         <form method="dialog" className='flex justify-center items-center'>
                             {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
+                            <button onClick={()=> navigate('/')} className="btn">Close</button>
                         </form>
                     </div>
                 </div>

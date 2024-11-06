@@ -1,7 +1,13 @@
 import { TiDeleteOutline } from "react-icons/ti";
+import { addCart } from "../Utilities";
 // import { useLocation } from "react-router-dom";
 
 const WishlistToDasboard = ({ product, handleRemoveWish }) => {
+    const handleAddCart= (product)=>{
+        addCart(product);
+        handleRemoveWish(product_id)
+        // getAllCartProduct(product)
+    };
     // const location = useLocation();
     // console.log(location.pathname) I don't need to use this bcz the component is separeted to product card
     const { product_id, description, product_title, product_image, price } = product;
@@ -26,8 +32,25 @@ const WishlistToDasboard = ({ product, handleRemoveWish }) => {
                         </p>
                     </div>
                 </div>
+                <div tabIndex={0} role="button" className="btn btn-sm">
+                    <div onClick={() => handleAddCart(product)} className="px-2 rounded-2xl flex items-center gap-1">
+                        <span className="font-sora font-bold text-lg">Add To Card</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                </div>
             </div>
-            <div onClick={()=>handleRemoveWish(product_id)} className='md:pr-10 mr-5'>
+            <div onClick={() => handleRemoveWish(product_id)} className='md:pr-10 mr-5'>
                 <button className='text-red-500 text-lg md:text-3xl font-thin'><TiDeleteOutline></TiDeleteOutline>  </button>
             </div>
         </div>

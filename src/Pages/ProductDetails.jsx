@@ -1,5 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { addCart, addWishList, getAllCartProduct, getAllWishProduct } from "../Utilities";
+import { addCart, addWishList,  } from "../Utilities";
 
 const ProductDetails = () => {
     const { product_id } = useParams();
