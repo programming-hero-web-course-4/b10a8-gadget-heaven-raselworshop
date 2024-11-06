@@ -23,7 +23,7 @@ const Statistics = () => {
                     <ComposedChart data={chartData}>
                         <CartesianGrid stroke="#f5f5f5"/>
                         <XAxis dataKey={"name"}></XAxis>
-                        <YAxis />
+                        <YAxis dataKey={"price"}/>
                         <Tooltip />
                         <Legend />
                         <Bar dataKey="price" barSize={30} fill="#8884d8"/>

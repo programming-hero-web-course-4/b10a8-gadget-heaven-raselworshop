@@ -7,13 +7,14 @@ import Statistics from '../Pages/Statistics'
 import Dashboard from '../Pages/Dashboard'
 import Cart from '../Pages/Cart'
 import WishList from '../Pages/WishList'
+import ErrorPage from '../Components/ErrorPage'
 
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <div className='text-7xl text-center'>You are in a wrong page</div>,
+    errorElement: <ErrorPage></ErrorPage> ,
     children:[
         {
             path:'/',
